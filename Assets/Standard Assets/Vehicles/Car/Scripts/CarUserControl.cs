@@ -40,8 +40,10 @@ namespace UnityStandardAssets.Vehicles.Car
 
     public class CarFrameMoveInfo
     {
-        private float m_MinClamp = -2f;
-        private float m_MaxClamp = 2f;
+        private float m_MinClamp = -1f;
+        private float m_MaxClamp = 1f;
+
+        public float randomFactor = 0.1f;
 
         public float h;
         public float v;
@@ -54,9 +56,9 @@ namespace UnityStandardAssets.Vehicles.Car
 
         public void SetRandomFrameMoveInfo() 
         {
-            h = UnityEngine.Random.Range(-1f, 1f);
-            v = UnityEngine.Random.Range(-1f, 1f);
-            handbrake = UnityEngine.Random.Range(-1f, 1f);
+            h = UnityEngine.Random.Range(-randomFactor, randomFactor);
+            v = UnityEngine.Random.Range(-randomFactor, randomFactor);
+            handbrake = UnityEngine.Random.Range(-randomFactor, randomFactor);
         }
 
         public void AddFrameMoveInfo(CarFrameMoveInfo carFrameMoveInfo)
