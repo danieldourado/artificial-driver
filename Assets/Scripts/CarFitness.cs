@@ -2,25 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarProgressTracker : MonoBehaviour
+public class CarFitness : MonoBehaviour
 {
 
     private List<GameObject> gatesTriggered = new List<GameObject>();
     private ProgressTracker m_ProgressTracker;
-    // Start is called before the first frame update
+
     void Start()
     {
         m_ProgressTracker = GameObject.FindObjectOfType<ProgressTracker>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    private float GetProgressOnTrack()
-    {
-        return 0f;
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -33,7 +23,7 @@ public class CarProgressTracker : MonoBehaviour
         }
     }
 
-    private float CalculateFitness()
+    public float CalculateFitness()
     {
         return m_ProgressTracker.CalculateProgress(gatesTriggered, transform.position);
     }

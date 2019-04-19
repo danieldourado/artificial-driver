@@ -291,11 +291,9 @@ GameObject:
   - component: {fileID: 341300514}
   - component: {fileID: 341300513}
   - component: {fileID: 341300512}
-  - component: {fileID: 341300516}
   - component: {fileID: 341300517}
-  - component: {fileID: 2429983329960768524}
   m_Layer: 10
-  m_Name: Car 1
+  m_Name: Car
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,7 +388,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96468c245ae8e0d4f8f1c7a7b8b0542e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  geneFrameExpectancy: 10
+  fitness: 0
+  dead: 0
+  geneFrameExpectancy: 1
 --- !u!114 &341300512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,18 +415,6 @@ MonoBehaviour:
   maxRolloffDistance: 500
   dopplerLevel: 1
   useDoppler: 1
---- !u!114 &341300516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341300511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f10cac3ce18b24fb8ecb54a2595d22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &341300517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,19 +427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b07c0575c2cbe418e558f167cea9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2429983329960768524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341300511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 485adaa6b6c7e7741b82405e7edf3e7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammountOfGenes: 1000
 --- !u!1 &365445926
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &395172344
 Transform:
   m_ObjectHideFlags: 0
@@ -825,7 +800,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -878,7 +853,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -931,7 +906,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -984,7 +959,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
