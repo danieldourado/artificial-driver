@@ -20,7 +20,7 @@ public class Population : MonoBehaviour
 
         for (int i = 0; i < populationSize; i++)
         {
-            population[i] = InstantiateNewVehicle(vehiclePrefab);
+            population[i] = InstantiateNewVehicle(vehiclePrefab, new DNA());
         }
     }
 
@@ -77,16 +77,11 @@ public class Population : MonoBehaviour
             population[i] = InstantiateNewVehicle(vehiclePrefab, child);
         }
     }
-
-    public Car InstantiateNewVehicle(GameObject prefab)
-    {
-        GameObject vehicle = GameObject.Instantiate(prefab);
-        vehicle.transform.SetParent(transform);
-        return vehicle.GetComponent<Car>();
-    }
     public Car InstantiateNewVehicle(GameObject prefab, DNA dna)
     {
-        Car vehicle = InstantiateNewVehicle(prefab);
+        GameObject gameobject = GameObject.Instantiate(prefab);
+        gameobject.transform.SetParent(transform);
+        Car vehicle = gameobject.GetComponent<Car>();
         vehicle.SetDNA(dna);
         return vehicle;
     }

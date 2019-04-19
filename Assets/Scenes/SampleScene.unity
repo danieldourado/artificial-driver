@@ -3148,7 +3148,7 @@ MonoBehaviour:
   matingPool: []
   generations: 0
   vehiclePrefab: {fileID: 341300511, guid: 9cce1fcb76c52454a8b39de1a40a82da, type: 3}
-  populationSize: 5
+  populationSize: 20
 --- !u!1 &1234299525 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: b87e14348acae3449a86167ae5521ac4,

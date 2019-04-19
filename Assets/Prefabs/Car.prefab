@@ -390,7 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fitness: 0
   dead: 0
-  geneFrameExpectancy: 1
+  geneFrameExpectancy: 10
 --- !u!114 &341300512
 MonoBehaviour:
   m_ObjectHideFlags: 0

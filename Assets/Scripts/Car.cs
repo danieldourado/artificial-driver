@@ -17,7 +17,6 @@ public class Car : Vehicle
     {
         // get the car controller
         m_Car = GetComponent<CarController>();
-        dna = new DNA();
         m_CurrentGene = dna.GetNextGene();
     }
     void OnCollisionEnter(Collision collision)
