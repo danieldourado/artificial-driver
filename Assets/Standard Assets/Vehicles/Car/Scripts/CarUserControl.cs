@@ -38,7 +38,7 @@ namespace UnityStandardAssets.Vehicles.Car
             else
                 footbrake = m_CurrentGene.v;
             
-            m_Car.Move(m_CurrentGene.h, acceleration, 0, 0);
+            m_Car.Move(m_CurrentGene.h, acceleration, footbrake, 0);
         }
     }
 }

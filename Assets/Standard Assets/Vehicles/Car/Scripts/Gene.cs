@@ -7,7 +7,7 @@ public class Gene
     private float m_MinClamp = -1f;
     private float m_MaxClamp = 1f;
 
-    public float randomFactor = 0.1f;
+    public float randomFactor = 1f;
 
     public float h;
     public float v;
