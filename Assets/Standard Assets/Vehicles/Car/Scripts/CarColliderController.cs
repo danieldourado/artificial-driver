@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityStandardAssets.Vehicles.Car;
 public class CarColliderController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -18,6 +18,9 @@ public class CarColliderController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.collider.gameObject.layer);
+        GameObject.FindObjectOfType<NaturalSelection>().ReportDeath(GetComponent<DNA>());
+        CarUserControl cuc = GetComponent<CarUserControl>();
+        cuc.Die();
+        cuc.enabled = false;
     }
 }

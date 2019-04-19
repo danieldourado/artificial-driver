@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DNA
+public class DNA : MonoBehaviour
 {
     public int ammountOfGenes = 1000;
     public List<Gene> genes = new List<Gene>();
 
     private int m_GeneCounter = 0;
-    public DNA()
+    void Awake()
     {
         for(int i=0; i<ammountOfGenes; i++)
         {
@@ -23,12 +23,13 @@ public class DNA
         if (m_GeneCounter < genes.Count-1)
             m_GeneCounter++;
 
+        /*
         Debug.Log(
             "Gene Counter: " + m_GeneCounter.ToString()
             +" H:"+ gene.h.ToString()
             + " V:" + gene.v.ToString()
             );
-
+        */
         return gene;
     }
 

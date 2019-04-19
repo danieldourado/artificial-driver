@@ -14,17 +14,25 @@ namespace UnityStandardAssets.Vehicles.Car
         private Gene m_CurrentGene;
         public int geneFrameExpectancy = 60;
         private int geneFrameAge = 0;
+        private bool dead = false;
 
-        private void Awake()
+        private void Start()
         {
             // get the car controller
             m_Car = GetComponent<CarController>();
-            m_CarDNA = new DNA();
+            m_CarDNA = GetComponent<DNA>();
             m_CurrentGene = m_CarDNA.GetNextGene();
+        }
+
+        internal void Die()
+        {
+            m_Car.Move(0, 0, 0, 0);
+            dead = true;
         }
 
         private void FixedUpdate()
         {
+            if (dead) return;
             geneFrameAge++;
             if (geneFrameAge > geneFrameExpectancy)
             {
@@ -38,7 +46,7 @@ namespace UnityStandardAssets.Vehicles.Car
             else
                 footbrake = m_CurrentGene.v;
             
-            m_Car.Move(m_CurrentGene.h, acceleration, footbrake, 0);
+            m_Car.Move(m_CurrentGene.h, acceleration, 0, 0);
         }
     }
 }
