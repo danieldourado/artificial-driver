@@ -33,6 +33,7 @@ public class Population : MonoBehaviour
         }
         Selection();
         Reproduction();
+        generations++;
 
     }
     // Generate a mating pool
@@ -80,7 +81,7 @@ public class Population : MonoBehaviour
     public Car InstantiateNewVehicle(GameObject prefab, DNA dna)
     {
         GameObject gameobject = GameObject.Instantiate(prefab);
-        gameobject.transform.SetParent(transform);
+        //gameobject.transform.SetParent(transform);
         Car vehicle = gameobject.GetComponent<Car>();
         vehicle.SetDNA(dna);
         return vehicle;

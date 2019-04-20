@@ -10,8 +10,6 @@ public class Car : Vehicle
 {
     private CarController m_Car; // the car controller we want to use
     private Gene m_CurrentGene;
-    public int geneFrameExpectancy = 60;
-    private int geneFrameAge = 0;
 
     private void Start()
     {
@@ -26,19 +24,14 @@ public class Car : Vehicle
     public override void Die()
     {
         m_Car.Move(0, 0, 0, 0);
-        fitness = GetComponent<CarFitness>().CalculateFitness();
+        fitness = GetComponent<CarFitness>().GetFitness();
         base.Die();
         GameObject.FindObjectOfType<Population>().ReportDeath();
     }
     private void FixedUpdate()
     {
         if (dead) return;
-        geneFrameAge++;
-        if (geneFrameAge > geneFrameExpectancy)
-        {
-            geneFrameAge = 0;
-            m_CurrentGene = dna.GetNextGene();            
-        }
+        m_CurrentGene = dna.GetNextGene();            
         float acceleration = 0f;
         float footbrake = 0f;
         if (m_CurrentGene.v > 0)
@@ -46,7 +39,7 @@ public class Car : Vehicle
         else
             footbrake = m_CurrentGene.v;
             
-        m_Car.Move(m_CurrentGene.h, acceleration, 0, 0);
+        m_Car.Move(m_CurrentGene.h, 1, 0, 0);
     }
     internal void SetDNA(DNA dna)
     {

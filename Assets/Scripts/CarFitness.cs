@@ -7,6 +7,7 @@ public class CarFitness : MonoBehaviour
 
     private List<GameObject> gatesTriggered = new List<GameObject>();
     private ProgressTracker m_ProgressTracker;
+    private int finishTime = 0;
 
     void Start()
     {
@@ -23,8 +24,22 @@ public class CarFitness : MonoBehaviour
         }
     }
 
-    public float CalculateFitness()
+    private void Update()
     {
-        return m_ProgressTracker.CalculateProgress(gatesTriggered, transform.position);
+        finishTime++;
+    }
+
+    public float GetFitness()
+    {
+        float recordDistance = m_ProgressTracker.CalculateProgress(gatesTriggered, transform.position);
+        return CalculateFitness(finishTime, recordDistance, gatesTriggered.Count);
+    }
+
+    private float CalculateFitness(float finishTime, float recordDistance, int checkpoints)
+    {
+        //float fitness = (1 / finishTime * recordDistance);
+        float fitness = recordDistance * recordDistance;
+        fitness *= checkpoints;
+        return fitness;
     }
 }

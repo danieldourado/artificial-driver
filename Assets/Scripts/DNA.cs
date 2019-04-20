@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class DNA
 {
-    public int ammountOfGenes = 200;
+    public int ammountOfGenes = 30*60;
     public List<Gene> genes = new List<Gene>();
 
     private int m_GeneCounter = 0;
