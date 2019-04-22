@@ -38,8 +38,9 @@ public class CarFitness : MonoBehaviour
     private float CalculateFitness(float finishTime, float recordDistance, int checkpoints)
     {
         //float fitness = (1 / finishTime * recordDistance);
-        float fitness = recordDistance * recordDistance;
-        fitness *= checkpoints;
+        float fitness = recordDistance * recordDistance * checkpoints;
+        fitness *= fitness;
+        //Debug.Log(fitness.ToString());
         return fitness;
     }
 }

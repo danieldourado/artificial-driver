@@ -59,9 +59,9 @@ public class Population : MonoBehaviour
         }
     }
 
-
     void Reproduction()
     {
+        Car[] newPopulation = new Car[populationSize];
         for (int i = 0; i < population.Length; i++)
         {
             int m = Random.Range(0, matingPool.Count - 1);
@@ -73,10 +73,13 @@ public class Population : MonoBehaviour
             DNA child = mom.Crossover(dad);
             child.Mutate(mutationRate);
 
-            Destroy(population[i].gameObject);
-
-            population[i] = InstantiateNewVehicle(vehiclePrefab, child);
+            newPopulation[i] = InstantiateNewVehicle(vehiclePrefab, child);
         }
+        for (int i = 0; i < population.Length; i++)
+        {
+            Destroy(population[i].gameObject);
+        }
+        population = newPopulation;
     }
     public Car InstantiateNewVehicle(GameObject prefab, DNA dna)
     {

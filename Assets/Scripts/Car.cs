@@ -8,7 +8,7 @@ using UnityStandardAssets.Vehicles.Car;
 [RequireComponent(typeof (CarController))]
 public class Car : Vehicle
 {
-    public int geneFrameExpectancy = 60;
+    public int geneFrameExpectancy = 30;
     private int geneFrameAge = 0;
     private Gene m_CurrentGene;
     private CarController m_Car; // the car controller we want to use
@@ -17,6 +17,7 @@ public class Car : Vehicle
     {
         // get the car controller
         m_Car = GetComponent<CarController>();
+        m_CurrentGene = dna.GetNextGene();
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -24,11 +25,10 @@ public class Car : Vehicle
     }
     public override void Die()
     {
-        m_Car.Move(0, 0, 0, 0);
         fitness = GetComponent<CarFitness>().GetFitness();
         base.Die();
-        GameObject.FindObjectOfType<Population>().ReportDeath();
         gameObject.SetActive(false);
+        GameObject.FindObjectOfType<Population>().ReportDeath();
     }
     private void FixedUpdate()
     {
@@ -43,7 +43,7 @@ public class Car : Vehicle
         float acceleration = 0f;
         float footbrake = 0f;
         if (m_CurrentGene.v > 0)
-            acceleration = m_CurrentGene.v;
+            acceleration = 1;
         else
             footbrake = m_CurrentGene.v;
             
