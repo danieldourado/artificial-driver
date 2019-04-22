@@ -8,14 +8,15 @@ using UnityStandardAssets.Vehicles.Car;
 [RequireComponent(typeof (CarController))]
 public class Car : Vehicle
 {
-    private CarController m_Car; // the car controller we want to use
+    public int geneFrameExpectancy = 60;
+    private int geneFrameAge = 0;
     private Gene m_CurrentGene;
+    private CarController m_Car; // the car controller we want to use
 
     private void Start()
     {
         // get the car controller
         m_Car = GetComponent<CarController>();
-        m_CurrentGene = dna.GetNextGene();
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -27,11 +28,18 @@ public class Car : Vehicle
         fitness = GetComponent<CarFitness>().GetFitness();
         base.Die();
         GameObject.FindObjectOfType<Population>().ReportDeath();
+        gameObject.SetActive(false);
     }
     private void FixedUpdate()
     {
         if (dead) return;
-        m_CurrentGene = dna.GetNextGene();            
+        geneFrameAge++;
+        if (geneFrameAge > geneFrameExpectancy)
+        {
+            geneFrameAge = 0;
+            m_CurrentGene = dna.GetNextGene();
+        }
+        
         float acceleration = 0f;
         float footbrake = 0f;
         if (m_CurrentGene.v > 0)
@@ -39,7 +47,7 @@ public class Car : Vehicle
         else
             footbrake = m_CurrentGene.v;
             
-        m_Car.Move(m_CurrentGene.h, 1, 0, 0);
+        m_Car.Move(m_CurrentGene.h, acceleration, 0, 0);
     }
     internal void SetDNA(DNA dna)
     {
