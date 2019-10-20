@@ -15,7 +15,7 @@ public class Car : Vehicle
 
     private void Start()
     {
-        this.geneFrameExpectancy = 10;
+        this.geneFrameExpectancy = 2;
         // get the car controller
         m_Car = GetComponent<CarController>();
         m_CurrentGene = dna.GetNextGene();

@@ -6,15 +6,17 @@ public class DNA
 {
     public int ammountOfGenes;
     public List<Gene> genes = new List<Gene>();
+    PerlinNoise pn = new PerlinNoise();
+
 
     private int m_GeneCounter;
     public DNA()
     {
         this.m_GeneCounter = -1;
-        this.ammountOfGenes = 6 * 100;
+        this.ammountOfGenes = 30 * 100;
         for (int i=0; i<ammountOfGenes; i++)
         {
-            genes.Add(new Gene());
+            genes.Add(new Gene(pn));
         }
     }
 
@@ -64,7 +66,7 @@ public class DNA
         {
             if (Random.Range(0f,1f) < m)
             {
-                genes[i] = new Gene();
+                genes[i] = new Gene(pn);
             }
         }
     }

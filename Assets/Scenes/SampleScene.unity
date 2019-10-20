@@ -2942,7 +2942,7 @@ MonoBehaviour:
   matingPool: []
   generations: 0
   vehiclePrefab: {fileID: 341300511, guid: 9cce1fcb76c52454a8b39de1a40a82da, type: 3}
-  populationSize: 20
+  populationSize: 100
 --- !u!114 &1202137328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2955,7 +2955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b625dda2d6fce147affde680b62f8fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timescale: 1
+  timescale: 2
 --- !u!1 &1253592266
 GameObject:
   m_ObjectHideFlags: 0
