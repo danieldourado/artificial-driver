@@ -371,8 +371,8 @@ MonoBehaviour:
   m_ReverseTorque: 500
   m_MaxHandbrakeTorque: 100000000
   m_Downforce: 100
-  m_SpeedType: 0
-  m_Topspeed: 150
+  m_SpeedType: 1
+  m_Topspeed: 75
   m_RevRangeBoundary: 1
   m_SlipLimit: 0.3
   m_BrakeTorque: 20000
@@ -390,7 +390,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fitness: 0
   dead: 0
-  geneFrameExpectancy: 1
+  geneFrameExpectancy: 0
+  geneFrameAge: 0
 --- !u!114 &341300512
 MonoBehaviour:
   m_ObjectHideFlags: 0

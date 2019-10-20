@@ -4,13 +4,15 @@ using System.Collections.Generic;
 
 public class DNA
 {
-    public int ammountOfGenes = 60*2;
+    public int ammountOfGenes;
     public List<Gene> genes = new List<Gene>();
 
-    private int m_GeneCounter = 0;
+    private int m_GeneCounter;
     public DNA()
     {
-        for(int i=0; i<ammountOfGenes; i++)
+        this.m_GeneCounter = -1;
+        this.ammountOfGenes = 6 * 100;
+        for (int i=0; i<ammountOfGenes; i++)
         {
             genes.Add(new Gene());
         }
@@ -18,10 +20,13 @@ public class DNA
 
     public Gene GetNextGene()
     {
+        if (m_GeneCounter < genes.Count - 1)
+            m_GeneCounter++;
+        else
+            Debug.Log("out of genes");
+
         Gene gene = genes[m_GeneCounter];
 
-        if (m_GeneCounter < genes.Count-1)
-            m_GeneCounter++;
 
         /*
         Debug.Log(
@@ -30,6 +35,7 @@ public class DNA
             + " V:" + gene.v.ToString()
             );
         */
+        
         return gene;
     }
 

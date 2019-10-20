@@ -8,13 +8,14 @@ using UnityStandardAssets.Vehicles.Car;
 [RequireComponent(typeof (CarController))]
 public class Car : Vehicle
 {
-    public int geneFrameExpectancy = 30;
-    private int geneFrameAge = 0;
-    private Gene m_CurrentGene;
+    public int geneFrameExpectancy;
+    public int geneFrameAge;
+    public Gene m_CurrentGene;
     private CarController m_Car; // the car controller we want to use
 
     private void Start()
     {
+        this.geneFrameExpectancy = 10;
         // get the car controller
         m_Car = GetComponent<CarController>();
         m_CurrentGene = dna.GetNextGene();
@@ -47,7 +48,7 @@ public class Car : Vehicle
         else
             footbrake = m_CurrentGene.v;
             
-        m_Car.Move(m_CurrentGene.h, acceleration, 0, 0);
+        m_Car.Move(m_CurrentGene.h, 1f, 0, 0);
     }
     internal void SetDNA(DNA dna)
     {
